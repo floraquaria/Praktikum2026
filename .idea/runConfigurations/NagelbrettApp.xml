@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="NagelbrettApp" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="org.example.NagelbrettApp" />
+    <module name="Praktikum2026" />
+    <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\focfqu\.m2\repository\org\openjfx&quot; --add-modules javafx.controls,javafx.graphics" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="org.example.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
+
