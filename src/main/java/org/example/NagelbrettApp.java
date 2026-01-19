@@ -28,8 +28,9 @@ public class NagelbrettApp extends Application {
     private static final int WIDTH = 800;
     private static final int HEIGHT = 500;
 
-    private static final int PEG_SPACING = 40;
+    private static final int PEG_SPACING = 60;
     private static final int PEG_RADIUS = 3;
+    int middle = 400;
 
     private double ballX = 120;
     private double ballY = 80;
@@ -133,7 +134,7 @@ public class NagelbrettApp extends Application {
                 12, 24);
 
         drawPegboard(g, w, h);
-        drawExamples(g);
+        drawBoxes(g);
 
         for (Circle c : circles) {
             g.setFill(c.color);
@@ -154,29 +155,119 @@ public class NagelbrettApp extends Application {
 
     private void drawPegboard(GraphicsContext g, double w, double h) {
         g.setFill(Color.web("#a0a0a0"));
-        for (int y = PEG_SPACING; y < h; y += PEG_SPACING) {
+        // Für ein Quadrat:
+        /*for (int y = PEG_SPACING; y < h; y += PEG_SPACING) {
             for (int x = PEG_SPACING; x < w; x += PEG_SPACING) {
                 g.fillOval(x - PEG_RADIUS, y - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
             }
+        }*/
+        int x = 0;
+        int x1;
+        int y = 0;
+        int pin = 1;
+        while (pin <= 7 ) {
+            x1 = x;
+            for (int i = 0; i < pin-1; i++) {
+
+                g.fillOval(400 + x1 * PEG_SPACING/2 - PEG_RADIUS, 70 + y * PEG_SPACING - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+                x1 = x1 + 2;
+            }
+            y = y + 1;
+            x = x - 1;
+            pin = pin + 1;
+
+
         }
+        //Herangehensweise der Formel oben:
+        /* g.fillOval(400 + 0 * 20 - PEG_RADIUS, 100 + 0 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+
+        g.fillOval(400 + (-1) * 20 - PEG_RADIUS, 100 + 1 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+        g.fillOval(400 + 1 * 20 - PEG_RADIUS, 100 + 1 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+
+        g.fillOval(400 + (-2) * 20 - PEG_RADIUS, 100 + 2 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+        g.fillOval(400 + 0 * 20 - PEG_RADIUS, 100 + 2 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+        g.fillOval(400 + 2 * 20 - PEG_RADIUS, 100 + 2 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+
+        g.fillOval(400 + (-3) * 20 - PEG_RADIUS, 100 + 3 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+        g.fillOval(400 + (-1) * 20 - PEG_RADIUS, 100 + 3 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+        g.fillOval(400 + 1 * 20  - PEG_RADIUS, 100 + 3 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+        g.fillOval(400 + 3 * 20 - PEG_RADIUS, 100 + 3 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+
+        g.fillOval(400 + (-4) * 20 - PEG_RADIUS, 100 + 4 * 40- PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+        g.fillOval(400 + (-2) * 20 - PEG_RADIUS, 100 + 4 * 40  - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+        g.fillOval(400 + 0 * 20 - PEG_RADIUS, 100 + 4 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+        g.fillOval(400 + 2 * 20 - PEG_RADIUS, 100 + 4 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+        g.fillOval(400 + 4 * 20 - PEG_RADIUS, 100 + 4 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+
+        g.fillOval(400 + (-5) * 20 - PEG_RADIUS, 100 + 5 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+        g.fillOval(400 + (-3) * 20 - PEG_RADIUS, 100 + 5 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+        g.fillOval(400 + (-1) * 20 - PEG_RADIUS, 100 + 5 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+        g.fillOval(400 + 1 * 20 - PEG_RADIUS, 100 + 5 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+        g.fillOval(400 + 3 * 20 - PEG_RADIUS, 100 + 5 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0);
+        g.fillOval(400 + 5 * 20 - PEG_RADIUS, 100 + 5 * 40 - PEG_RADIUS, PEG_RADIUS * 2.0, PEG_RADIUS * 2.0); */
+
+
+    }
+    private void drawBoxes(GraphicsContext g) {
+        g.setFill(Color.web("#3d1b5e"));
+        g.setStroke(Color.web("#ad83d6"));
+        g.setLineWidth(3);
+
+        //g.fillRoundRect(75, 75, 90, 60, 16, 16);
+        //g.strokeRoundRect(75, 75, 90, 60, 16, 16);
+
+        g.fillRoundRect(184, 455, 65, 42, 16, 16);
+        g.strokeRoundRect(184, 455, 65, 42, 16, 16);
+        g.setStroke(Color.web("#202124"));
+        g.strokeLine(194, 455, 239, 455);
+
+        g.setStroke(Color.web("#ad83d6"));
+        g.fillRoundRect(249, 455, 65, 42, 16, 16);
+        g.strokeRoundRect(249, 455, 65, 42, 16, 16);
+        g.setStroke(Color.web("#202124"));
+        g.strokeLine(259, 455, 304, 455);
+
+        g.setStroke(Color.web("#ad83d6"));
+        g.fillRoundRect(314, 455, 65, 42, 16, 16);
+        g.strokeRoundRect(314, 455, 65, 42, 16, 16);
+        g.setStroke(Color.web("#202124"));
+        g.strokeLine(324, 455, 369, 455);
+
+        g.setStroke(Color.web("#ad83d6"));
+        g.fillRoundRect(379, 455, 65, 42, 16, 16);
+        g.strokeRoundRect(379, 455, 65, 42, 16, 16);
+        g.setStroke(Color.web("#202124"));
+        g.strokeLine(389, 455, 434, 455);
+
+        g.setStroke(Color.web("#ad83d6"));
+        g.fillRoundRect(444, 455, 65, 42, 16, 16);
+        g.strokeRoundRect(444, 455, 65, 42, 16, 16);
+        g.setStroke(Color.web("#202124"));
+        g.strokeLine(454, 455, 499, 455);
+
+        g.setStroke(Color.web("#ad83d6"));
+        g.fillRoundRect(509, 455, 65, 42, 16, 16);
+        g.strokeRoundRect(509, 455, 65, 42, 16, 16);
+        g.setStroke(Color.web("#202124"));
+        g.strokeLine(519, 455, 564, 455);
     }
 
     private void drawExamples(GraphicsContext g) {
-        g.setFill(Color.web("#00C853"));
-        g.setStroke(Color.web("#1B5E20"));
+        g.setFill(Color.web("#3d1b5e"));
+        g.setStroke(Color.web("#ad83d6"));
         g.setLineWidth(3);
-        g.fillRoundRect(500, 60, 120, 60, 16, 16);
-        g.strokeRoundRect(500, 60, 120, 60, 16, 16);
+        g.fillRoundRect(75, 75, 90, 60, 16, 16);
+        g.strokeRoundRect(75, 75, 90, 60, 16, 16);
 
-        g.setStroke(Color.ORANGE);
+        g.setStroke(Color.web("#ed5439"));
         g.setLineWidth(2);
-        double x1 = 520, y1 = 150, x2 = 640, y2 = 210;
+        double x1 = 80, y1 = 120, x2 = 160, y2 = 120;
         g.strokeLine(x1, y1, x2, y2);
         drawArrowHead(g, x1, y1, x2, y2);
 
         g.setFill(Color.WHITE);
-        g.setFont(Font.font(14));
-        g.fillText("Beispiel: Rechteck, Linie, Text, Animation", 500, 240);
+        g.setFont(Font.font(15));
+        g.fillText("Hello world", 80, 105);
     }
 
     private void drawArrowHead(GraphicsContext g, double x1, double y1, double x2, double y2) {
