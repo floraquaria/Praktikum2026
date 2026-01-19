@@ -1,6 +1,7 @@
 package org.example;
 
 import javafx.animation.AnimationTimer;
+import javafx.animation.PathTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -8,8 +9,15 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.CubicCurveTo;
+import javafx.scene.shape.Sphere;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import javafx.scene.*;
+import javafx.scene.shape.*;
+import javafx.scene.shape.Path;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -46,9 +54,30 @@ public class NagelbrettApp extends Application {
 
     @Override
     public void start(Stage stage) {
-        BorderPane root = new BorderPane();
+        BorderPane pane = new BorderPane();
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         GraphicsContext g = canvas.getGraphicsContext2D();
+
+        //new Ball
+        Sphere ball = new Sphere(15);
+        ball.setTranslateX(50);
+        ball.setTranslateY(50);
+
+        //new Path
+        Path path = new Path();
+        path.getElements().add(new MoveTo(50, 50));
+        path.getElements().add(new CubicCurveTo(150, 0, 250, 200, 350, 100));
+        path.setStroke(Color.web("#202124"));
+        path.setStrokeWidth(2);
+        path.setFill(null);
+
+        PathTransition transition = new PathTransition();
+        transition.setNode(ball);
+        transition.setPath(path);
+        transition.setDuration(Duration.seconds(4));
+        transition.setCycleCount(PathTransition.INDEFINITE);
+        transition.setAutoReverse(true);
+        transition.play();
 
         canvas.setOnMouseClicked(e -> {
             if (e.getButton() == MouseButton.PRIMARY) {
@@ -60,8 +89,8 @@ public class NagelbrettApp extends Application {
             }
         });
 
-        root.setCenter(canvas);
-
+        pane.setCenter(canvas);
+        Group root = new Group(pane, path,  ball);
         Scene scene = new Scene(root, WIDTH, HEIGHT, Color.web("#202124"));
         stage.setTitle("JavaFX Canvas: Nagelbrett + Animation (Starter)");
         stage.setScene(scene);
@@ -216,40 +245,40 @@ public class NagelbrettApp extends Application {
         //g.fillRoundRect(75, 75, 90, 60, 16, 16);
         //g.strokeRoundRect(75, 75, 90, 60, 16, 16);
 
-        g.fillRoundRect(184, 455, 65, 42, 16, 16);
-        g.strokeRoundRect(184, 455, 65, 42, 16, 16);
+        g.fillRoundRect(190, 455, 60, 42, 16, 16);
+        g.strokeRoundRect(190, 455, 60, 42, 16, 16);
         g.setStroke(Color.web("#202124"));
-        g.strokeLine(194, 455, 239, 455);
+        g.strokeLine(200, 455, 240, 455);
 
         g.setStroke(Color.web("#ad83d6"));
-        g.fillRoundRect(249, 455, 65, 42, 16, 16);
-        g.strokeRoundRect(249, 455, 65, 42, 16, 16);
+        g.fillRoundRect(250, 455, 60, 42, 16, 16);
+        g.strokeRoundRect(250, 455, 60, 42, 16, 16);
         g.setStroke(Color.web("#202124"));
-        g.strokeLine(259, 455, 304, 455);
+        g.strokeLine(260, 455, 300, 455);
 
         g.setStroke(Color.web("#ad83d6"));
-        g.fillRoundRect(314, 455, 65, 42, 16, 16);
-        g.strokeRoundRect(314, 455, 65, 42, 16, 16);
+        g.fillRoundRect(310, 455, 60, 42, 16, 16);
+        g.strokeRoundRect(310, 455, 60, 42, 16, 16);
         g.setStroke(Color.web("#202124"));
-        g.strokeLine(324, 455, 369, 455);
+        g.strokeLine(320, 455, 360, 455);
 
         g.setStroke(Color.web("#ad83d6"));
-        g.fillRoundRect(379, 455, 65, 42, 16, 16);
-        g.strokeRoundRect(379, 455, 65, 42, 16, 16);
+        g.fillRoundRect(370, 455, 60, 42, 16, 16);
+        g.strokeRoundRect(370, 455, 60, 42, 16, 16);
         g.setStroke(Color.web("#202124"));
-        g.strokeLine(389, 455, 434, 455);
+        g.strokeLine(380, 455, 420, 455);
 
         g.setStroke(Color.web("#ad83d6"));
-        g.fillRoundRect(444, 455, 65, 42, 16, 16);
-        g.strokeRoundRect(444, 455, 65, 42, 16, 16);
+        g.fillRoundRect(430, 455, 60, 42, 16, 16);
+        g.strokeRoundRect(430, 455, 60, 42, 16, 16);
         g.setStroke(Color.web("#202124"));
-        g.strokeLine(454, 455, 499, 455);
+        g.strokeLine(440, 455, 480, 455);
 
         g.setStroke(Color.web("#ad83d6"));
-        g.fillRoundRect(509, 455, 65, 42, 16, 16);
-        g.strokeRoundRect(509, 455, 65, 42, 16, 16);
+        g.fillRoundRect(490, 455, 60, 42, 16, 16);
+        g.strokeRoundRect(490, 455, 60, 42, 16, 16);
         g.setStroke(Color.web("#202124"));
-        g.strokeLine(519, 455, 564, 455);
+        g.strokeLine(500, 455, 540, 455);
     }
 
     private void drawExamples(GraphicsContext g) {
