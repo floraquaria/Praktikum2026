@@ -37,7 +37,7 @@ public class NagelbrettApp extends Application {
     private static final int HEIGHT = 500;
 
     private static final int PEG_SPACING = 60;
-    private static final int PEG_RADIUS = 3;
+    private static final int PEG_RADIUS = 6;
     int middle = 400;
 
     private double ballX = 120;
@@ -60,24 +60,259 @@ public class NagelbrettApp extends Application {
 
         //new Ball
         Sphere ball = new Sphere(15);
-        ball.setTranslateX(50);
-        ball.setTranslateY(50);
+        ball.setTranslateX(400);
+        ball.setTranslateY(70);
 
-        //new Path
-        Path path = new Path();
-        path.getElements().add(new MoveTo(50, 50));
-        path.getElements().add(new CubicCurveTo(150, 0, 250, 200, 350, 100));
-        path.setStroke(Color.web("#202124"));
-        path.setStrokeWidth(2);
-        path.setFill(null);
+        //new Paths
+        Path p1u1 = new Path();
+        p1u1.getElements().add(new MoveTo(370, 130));
+        p1u1.getElements().add(new LineTo(340, 190));
+        p1u1.setStroke(Color.GREY);
+        p1u1.setStrokeWidth(2);
+        p1u1.setFill(null);
 
-        PathTransition transition = new PathTransition();
-        transition.setNode(ball);
-        transition.setPath(path);
-        transition.setDuration(Duration.seconds(4));
-        transition.setCycleCount(PathTransition.INDEFINITE);
-        transition.setAutoReverse(true);
-        transition.play();
+        Path p1u2 = new Path();
+        p1u2.getElements().add(new MoveTo(370, 130));
+        p1u2.getElements().add(new LineTo(400, 190));
+        p1u2.setStroke(Color.GREY);
+        p1u2.setStrokeWidth(2);
+        p1u2.setFill(null);
+
+        Path p2u1 = new Path();
+        p2u1.getElements().add(new MoveTo(340, 190));
+        p2u1.getElements().add(new LineTo(310, 250));
+        p2u1.setStroke(Color.GREY);
+        p2u1.setStrokeWidth(2);
+        p2u1.setFill(null);
+
+        Path p2u2 = new Path();
+        p2u2.getElements().add(new MoveTo(340, 190));
+        p2u2.getElements().add(new LineTo(370, 250));
+        p2u2.setStroke(Color.GREY);
+        p2u2.setStrokeWidth(2);
+        p2u2.setFill(null);
+
+        Path p2u3 = new Path();
+        p2u3.getElements().add(new MoveTo(400, 190));
+        p2u3.getElements().add(new LineTo(370, 250));
+        p2u3.setStroke(Color.GREY);
+        p2u3.setStrokeWidth(2);
+        p2u3.setFill(null);
+
+        Path p2u4 = new Path();
+        p2u4.getElements().add(new MoveTo(400, 190));
+        p2u4.getElements().add(new LineTo(430, 250));
+        p2u4.setStroke(Color.GREY);
+        p2u4.setStrokeWidth(2);
+        p2u4.setFill(null);
+
+        Path p3u1 = new Path();
+        p3u1.getElements().add(new MoveTo(310, 250));
+        p3u1.getElements().add(new LineTo(280, 310));
+        p3u1.setStroke(Color.GREY);
+        p3u1.setStrokeWidth(2);
+        p3u1.setFill(null);
+
+        Path p3u2 = new Path();
+        p3u2.getElements().add(new MoveTo(310, 250));
+        p3u2.getElements().add(new LineTo(340, 310));
+        p3u2.setStroke(Color.GREY);
+        p3u2.setStrokeWidth(2);
+        p3u2.setFill(null);
+
+        Path p3u3 = new Path();
+        p3u3.getElements().add(new MoveTo(370, 250));
+        p3u3.getElements().add(new LineTo(340, 310));
+        p3u3.setStroke(Color.GREY);
+        p3u3.setStrokeWidth(2);
+        p3u3.setFill(null);
+
+        Path p3u4 = new Path();
+        p3u4.getElements().add(new MoveTo(370, 250));
+        p3u4.getElements().add(new LineTo(400, 310));
+        p3u4.setStroke(Color.GREY);
+        p3u4.setStrokeWidth(2);
+        p3u4.setFill(null);
+
+        Path p3u5 = new Path();
+        p3u5.getElements().add(new MoveTo(430, 250));
+        p3u5.getElements().add(new LineTo(400, 310));
+        p3u5.setStroke(Color.GREY);
+        p3u5.setStrokeWidth(2);
+        p3u5.setFill(null);
+
+        Path p3u6 = new Path();
+        p3u6.getElements().add(new MoveTo(430, 250));
+        p3u6.getElements().add(new LineTo(460, 310));
+        p3u6.setStroke(Color.GREY);
+        p3u6.setStrokeWidth(2);
+        p3u6.setFill(null);
+
+        Path p4u1 = new Path();
+        p4u1.getElements().add(new MoveTo(280, 310));
+        p4u1.getElements().add(new LineTo(250, 370));
+        p4u1.setStroke(Color.GREY);
+        p4u1.setStrokeWidth(2);
+        p4u1.setFill(null);
+
+        Path p4u2 = new Path();
+        p4u2.getElements().add(new MoveTo(280, 310));
+        p4u2.getElements().add(new LineTo(310, 370));
+        p4u2.setStroke(Color.GREY);
+        p4u2.setStrokeWidth(2);
+        p4u2.setFill(null);
+
+        Path p4u3 = new Path();
+        p4u3.getElements().add(new MoveTo(340, 310));
+        p4u3.getElements().add(new LineTo(310, 370));
+        p4u3.setStroke(Color.GREY);
+        p4u3.setStrokeWidth(2);
+        p4u3.setFill(null);
+
+        Path p4u4 = new Path();
+        p4u4.getElements().add(new MoveTo(340, 310));
+        p4u4.getElements().add(new LineTo(370, 370));
+        p4u4.setStroke(Color.GREY);
+        p4u4.setStrokeWidth(2);
+        p4u4.setFill(null);
+
+        Path p4u5 = new Path();
+        p4u5.getElements().add(new MoveTo(400, 310));
+        p4u5.getElements().add(new LineTo(370, 370));
+        p4u5.setStroke(Color.GREY);
+        p4u5.setStrokeWidth(2);
+        p4u5.setFill(null);
+
+        Path p4u6 = new Path();
+        p4u6.getElements().add(new MoveTo(400, 310));
+        p4u6.getElements().add(new LineTo(430, 370));
+        p4u6.setStroke(Color.GREY);
+        p4u6.setStrokeWidth(2);
+        p4u6.setFill(null);
+
+        Path p4u7 = new Path();
+        p4u7.getElements().add(new MoveTo(460, 310));
+        p4u7.getElements().add(new LineTo(430, 370));
+        p4u7.setStroke(Color.GREY);
+        p4u7.setStrokeWidth(2);
+        p4u7.setFill(null);
+
+        Path p4u8 = new Path();
+        p4u8.getElements().add(new MoveTo(460, 310));
+        p4u8.getElements().add(new LineTo(490, 370));
+        p4u8.setStroke(Color.GREY);
+        p4u8.setStrokeWidth(2);
+        p4u8.setFill(null);
+
+        Path p5u1 = new Path();
+        p5u1.getElements().add(new MoveTo(250, 370));
+        p5u1.getElements().add(new LineTo(220, 430));
+        p5u1.setStroke(Color.GREY);
+        p5u1.setStrokeWidth(2);
+        p5u1.setFill(null);
+
+        Path p5u2 = new Path();
+        p5u2.getElements().add(new MoveTo(250, 370));
+        p5u2.getElements().add(new LineTo(280, 430));
+        p5u2.setStroke(Color.GREY);
+        p5u2.setStrokeWidth(2);
+        p5u2.setFill(null);
+
+        Path p5u3 = new Path();
+        p5u3.getElements().add(new MoveTo(310, 370));
+        p5u3.getElements().add(new LineTo(280, 430));
+        p5u3.setStroke(Color.GREY);
+        p5u3.setStrokeWidth(2);
+        p5u3.setFill(null);
+
+        Path p5u4 = new Path();
+        p5u4.getElements().add(new MoveTo(310, 370));
+        p5u4.getElements().add(new LineTo(340, 430));
+        p5u4.setStroke(Color.GREY);
+        p5u4.setStrokeWidth(2);
+        p5u4.setFill(null);
+
+        Path p5u5 = new Path();
+        p5u5.getElements().add(new MoveTo(370, 370));
+        p5u5.getElements().add(new LineTo(340, 430));
+        p5u5.setStroke(Color.GREY);
+        p5u5.setStrokeWidth(2);
+        p5u5.setFill(null);
+
+        Path p5u6 = new Path();
+        p5u6.getElements().add(new MoveTo(370, 370));
+        p5u6.getElements().add(new LineTo(400, 430));
+        p5u6.setStroke(Color.GREY);
+        p5u6.setStrokeWidth(2);
+        p5u6.setFill(null);
+
+        Path p5u7 = new Path();
+        p5u7.getElements().add(new MoveTo(430, 370));
+        p5u7.getElements().add(new LineTo(400, 430));
+        p5u7.setStroke(Color.GREY);
+        p5u7.setStrokeWidth(2);
+        p5u7.setFill(null);
+
+        Path p5u8 = new Path();
+        p5u8.getElements().add(new MoveTo(430, 370));
+        p5u8.getElements().add(new LineTo(460, 430));
+        p5u8.setStroke(Color.GREY);
+        p5u8.setStrokeWidth(2);
+        p5u8.setFill(null);
+
+        Path p5u9 = new Path();
+        p5u9.getElements().add(new MoveTo(490, 370));
+        p5u9.getElements().add(new LineTo(460, 430));
+        p5u9.setStroke(Color.GREY);
+        p5u9.setStrokeWidth(2);
+        p5u9.setFill(null);
+
+        Path p5u10 = new Path();
+        p5u10.getElements().add(new MoveTo(490, 370));
+        p5u10.getElements().add(new LineTo(520, 430));
+        p5u10.setStroke(Color.GREY);
+        p5u10.setStrokeWidth(2);
+        p5u10.setFill(null);
+
+
+        //Path Transition
+        PathTransition tp1u1 = new PathTransition(Duration.seconds(4), p1u1, ball);
+        PathTransition tp1u2 = new PathTransition(Duration.seconds(4), p1u2, ball);
+        PathTransition tp2u1 = new PathTransition(Duration.seconds(4), p2u1, ball);
+        PathTransition tp2u2 = new PathTransition(Duration.seconds(4), p2u2, ball);
+        PathTransition tp2u3 = new PathTransition(Duration.seconds(4), p2u3, ball);
+        PathTransition tp2u4 = new PathTransition(Duration.seconds(4), p2u4, ball);
+        PathTransition tp3u1 = new PathTransition(Duration.seconds(4), p3u1, ball);
+        PathTransition tp3u2 = new PathTransition(Duration.seconds(4), p3u2, ball);
+        PathTransition tp3u3 = new PathTransition(Duration.seconds(4), p3u3, ball);
+        PathTransition tp3u4 = new PathTransition(Duration.seconds(4), p3u4, ball);
+        PathTransition tp3u5 = new PathTransition(Duration.seconds(4), p3u5, ball);
+        PathTransition tp3u6 = new PathTransition(Duration.seconds(4), p3u6, ball);
+        PathTransition tp4u1 = new PathTransition(Duration.seconds(4), p4u1, ball);
+        PathTransition tp4u2 = new PathTransition(Duration.seconds(4), p4u2, ball);
+        PathTransition tp4u3 = new PathTransition(Duration.seconds(4), p4u3, ball);
+        PathTransition tp4u4 = new PathTransition(Duration.seconds(4), p4u4, ball);
+        PathTransition tp4u5 = new PathTransition(Duration.seconds(4), p4u5, ball);
+        PathTransition tp4u6 = new PathTransition(Duration.seconds(4), p4u6, ball);
+        PathTransition tp4u7 = new PathTransition(Duration.seconds(4), p4u7, ball);
+        PathTransition tp4u8 = new PathTransition(Duration.seconds(4), p4u8, ball);
+        PathTransition tp5u1 = new PathTransition(Duration.seconds(4), p5u1, ball);
+        PathTransition tp5u2 = new PathTransition(Duration.seconds(4), p5u2, ball);
+        PathTransition tp5u3 = new PathTransition(Duration.seconds(4), p5u3, ball);
+        PathTransition tp5u4 = new PathTransition(Duration.seconds(4), p5u4, ball);
+        PathTransition tp5u5 = new PathTransition(Duration.seconds(4), p5u5, ball);
+        PathTransition tp5u6 = new PathTransition(Duration.seconds(4), p5u6, ball);
+        PathTransition tp5u7 = new PathTransition(Duration.seconds(4), p5u7, ball);
+        PathTransition tp5u8 = new PathTransition(Duration.seconds(4), p5u8, ball);
+        PathTransition tp5u9 = new PathTransition(Duration.seconds(4), p5u9, ball);
+        PathTransition tp5u10 = new PathTransition(Duration.seconds(4), p5u10, ball);
+
+
+
+        //tl1.setCycleCount(PathTransition.INDEFINITE);
+        //tl1.setAutoReverse(true);
+        //tp1u1.setOnFinished(e -> tp1u2.play());
+        tp1u1.play();
 
         canvas.setOnMouseClicked(e -> {
             if (e.getButton() == MouseButton.PRIMARY) {
@@ -90,7 +325,9 @@ public class NagelbrettApp extends Application {
         });
 
         pane.setCenter(canvas);
-        Group root = new Group(pane, path,  ball);
+        //Objects in group
+        Group paths = new Group(p1u1, p1u2, p2u1, p2u2, p2u3, p2u4, p3u1, p3u2, p3u3, p3u4, p3u5, p3u6, p4u1, p4u2, p4u3, p4u4, p4u5, p4u6, p4u7, p4u8, p5u1, p5u2, p5u3, p5u4, p5u5, p5u6, p5u7, p5u8, p5u9, p5u10);
+        Group root = new Group(pane, paths, ball);
         Scene scene = new Scene(root, WIDTH, HEIGHT, Color.web("#202124"));
         stage.setTitle("JavaFX Canvas: Nagelbrett + Animation (Starter)");
         stage.setScene(scene);
