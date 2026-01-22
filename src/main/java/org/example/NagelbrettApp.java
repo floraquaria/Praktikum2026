@@ -64,6 +64,13 @@ public class NagelbrettApp extends Application {
         ball.setTranslateY(70);
 
         //new Paths
+        Path pstart = new Path();
+        pstart.getElements().add(new MoveTo(370, 50));
+        pstart.getElements().add(new LineTo(370, 130));
+        pstart.setStroke(Color.GREY);
+        pstart.setStrokeWidth(2);
+        pstart.setFill(null);
+
         Path p1u1 = new Path();
         p1u1.getElements().add(new MoveTo(370, 130));
         p1u1.getElements().add(new LineTo(340, 190));
@@ -274,8 +281,53 @@ public class NagelbrettApp extends Application {
         p5u10.setStrokeWidth(2);
         p5u10.setFill(null);
 
+        Path p1ende = new Path();
+        p1ende.getElements().add(new MoveTo(220, 430));
+        p1ende.getElements().add(new LineTo(220, 460));
+        p1ende.setStroke(Color.GREY);
+        p1ende.setStrokeWidth(2);
+        p1ende.setFill(null);
+
+        Path p2ende = new Path();
+        p2ende.getElements().add(new MoveTo(280, 430));
+        p2ende.getElements().add(new LineTo(280, 460));
+        p2ende.setStroke(Color.GREY);
+        p2ende.setStrokeWidth(2);
+        p2ende.setFill(null);
+
+        Path p3ende = new Path();
+        p3ende.getElements().add(new MoveTo(340, 430));
+        p3ende.getElements().add(new LineTo(340, 460));
+        p3ende.setStroke(Color.GREY);
+        p3ende.setStrokeWidth(2);
+        p3ende.setFill(null);
+
+        Path p4ende = new Path();
+        p4ende.getElements().add(new MoveTo(400, 430));
+        p4ende.getElements().add(new LineTo(400, 460));
+        p4ende.setStroke(Color.GREY);
+        p4ende.setStrokeWidth(2);
+        p4ende.setFill(null);
+
+        Path p5ende = new Path();
+        p5ende.getElements().add(new MoveTo(460, 430));
+        p5ende.getElements().add(new LineTo(460, 460));
+        p5ende.setStroke(Color.GREY);
+        p5ende.setStrokeWidth(2);
+        p5ende.setFill(null);
+
+        Path p6ende = new Path();
+        p6ende.getElements().add(new MoveTo(520, 430));
+        p6ende.getElements().add(new LineTo(520, 460));
+        p6ende.setStroke(Color.GREY);
+        p6ende.setStrokeWidth(2);
+        p6ende.setFill(null);
+
+
+
 
         //Path Transition
+        PathTransition tpstart = new PathTransition(Duration.seconds(4), pstart, ball);
         PathTransition tp1u1 = new PathTransition(Duration.seconds(4), p1u1, ball);
         PathTransition tp1u2 = new PathTransition(Duration.seconds(4), p1u2, ball);
         PathTransition tp2u1 = new PathTransition(Duration.seconds(4), p2u1, ball);
@@ -306,13 +358,268 @@ public class NagelbrettApp extends Application {
         PathTransition tp5u8 = new PathTransition(Duration.seconds(4), p5u8, ball);
         PathTransition tp5u9 = new PathTransition(Duration.seconds(4), p5u9, ball);
         PathTransition tp5u10 = new PathTransition(Duration.seconds(4), p5u10, ball);
+        PathTransition tp1ende = new PathTransition(Duration.seconds(4), p1ende, ball);
+        PathTransition tp2ende = new PathTransition(Duration.seconds(4), p2ende, ball);
+        PathTransition tp3ende = new PathTransition(Duration.seconds(4), p3ende, ball);
+        PathTransition tp4ende = new PathTransition(Duration.seconds(4), p4ende, ball);
+        PathTransition tp5ende = new PathTransition(Duration.seconds(4), p5ende, ball);
+        PathTransition tp6ende = new PathTransition(Duration.seconds(4), p6ende, ball);
 
 
 
-        //tl1.setCycleCount(PathTransition.INDEFINITE);
-        //tl1.setAutoReverse(true);
-        //tp1u1.setOnFinished(e -> tp1u2.play());
-        tp1u1.play();
+        // choose random
+        Random rand = new Random();
+        if (rand.nextInt(2) == 0) {
+          tpstart.setOnFinished(e -> tp1u1.play()); //1
+          if (rand.nextInt(2) == 0) {
+            tp1u1.setOnFinished(e -> tp2u1.play()); //2
+            if (rand.nextInt(2) == 0) {
+              tp2u1.setOnFinished(e -> tp3u1.play()); //3
+              if (rand.nextInt(2) == 0) {
+                tp3u1.setOnFinished(e -> tp4u1.play()); //4
+                if (rand.nextInt(2) == 0) {
+                  tp4u1.setOnFinished(e -> tp5u1.play()); //5
+
+                  tp5u1.setOnFinished(e -> tp1ende.play()); //ende
+                }
+                else {
+                  tp4u1.setOnFinished(e -> tp5u2.play()); //5
+
+                  tp5u2.setOnFinished(e -> tp2ende.play()); //ende
+                }
+              }
+              else {
+                tp3u1.setOnFinished(e -> tp4u2.play()); //4
+                if (rand.nextInt(2) == 0) {
+                  tp4u2.setOnFinished(e -> tp5u3.play()); //5
+
+                  tp5u3.setOnFinished(e -> tp2ende.play()); //ende
+                }
+                else {
+                  tp4u2.setOnFinished(e -> tp5u4.play()); //5
+
+                  tp5u4.setOnFinished(e -> tp3ende.play()); //ende
+                }
+              }
+            }
+            else {
+              tp2u1.setOnFinished(e -> tp3u2.play()); //3
+              if (rand.nextInt(2) == 0) {
+                tp3u2.setOnFinished(e -> tp4u3.play()); //4
+                if (rand.nextInt(2) == 0) {
+                  tp4u3.setOnFinished(e -> tp5u3.play());  //5
+
+                  tp5u3.setOnFinished(e -> tp2ende.play()); //ende
+                }
+                else {
+                  tp4u3.setOnFinished(e -> tp5u4.play());  //5
+
+                  tp5u4.setOnFinished(e -> tp3ende.play());  //ende
+                }
+              }
+              else{
+                tp3u2.setOnFinished(e -> tp4u4.play()); //4
+                if (rand.nextInt(2) == 0) {
+                  tp4u4.setOnFinished(e -> tp5u5.play()); //5
+
+                  tp5u5.setOnFinished(e -> tp3ende.play()); //ende
+                }
+                else {
+                  tp4u4.setOnFinished(e -> tp5u6.play()); //5
+
+                  tp5u6.setOnFinished(e -> tp4ende.play()); //ende
+                }
+              }
+            }
+          }
+          else {
+            tp1u1.setOnFinished(e -> tp2u2.play()); //2
+            if (rand.nextInt(2) == 0) {
+              tp2u2.setOnFinished(e -> tp3u3.play()); //3
+              if (rand.nextInt(2) == 0) {
+                tp3u3.setOnFinished(e -> tp4u3.play()); //4
+                if (rand.nextInt(2) == 0) {
+                  tp4u3.setOnFinished(e -> tp5u3.play()); //5
+
+                  tp5u3.setOnFinished(e -> tp2ende.play()); //ende
+                }
+                else {
+                  tp4u3.setOnFinished(e -> tp5u4.play()); //5
+
+                  tp5u4.setOnFinished(e -> tp3ende.play());  //ende
+                }
+              }
+              else {
+                tp3u3.setOnFinished(e -> tp4u4.play());  //4
+                if (rand.nextInt(2) == 0) {
+                  tp4u4.setOnFinished(e -> tp5u5.play()); //5
+
+                  tp5u5.setOnFinished(e -> tp3ende.play()); //ende
+                }
+                else {
+                  tp4u4.setOnFinished(e -> tp5u6.play());  //5
+
+                  tp5u6.setOnFinished(e -> tp4ende.play()); //ende
+                }
+              }
+            }
+            else {
+              tp2u2.setOnFinished(e -> tp3u4.play()); //3
+              if (rand.nextInt(2) == 0) {
+                tp3u4.setOnFinished(e -> tp4u5.play()); //4
+                if (rand.nextInt(2) == 0) {
+                  tp4u5.setOnFinished(e -> tp5u5.play()); //5
+
+                  tp5u5.setOnFinished(e -> tp3ende.play()); //ende
+                }
+                else {
+                  tp4u5.setOnFinished(e -> tp5u6.play()); //5
+
+                  tp5u6.setOnFinished(e -> tp4ende.play()); //ende
+                }
+              }
+              else {
+                tp3u4.setOnFinished(e -> tp4u6.play());  //4
+                if (rand.nextInt(2) == 0) {
+                  tp4u6.setOnFinished(e -> tp5u7.play()); //5
+
+                  tp5u7.setOnFinished(e -> tp4ende.play()); //ende
+                }
+                else {
+                  tp4u6.setOnFinished(e -> tp5u8.play()); //5
+
+                  tp5u8.setOnFinished(e -> tp5ende.play()); //ende
+                }
+              }
+            }
+          }
+        }
+        else {
+          tpstart.setOnFinished(e -> tp1u2.play()); //1
+          if (rand.nextInt(2) == 0) {
+            tp1u2.setOnFinished(e -> tp2u3.play()); //2
+            if (rand.nextInt(2) == 0) {
+              tp2u3.setOnFinished(e -> tp3u3.play()); //3
+              if (rand.nextInt(2) == 0) {
+                tp3u3.setOnFinished(e -> tp4u3.play());  //4
+                if (rand.nextInt(2) == 0) {
+                  tp4u3.setOnFinished(e -> tp5u3.play()); //5
+
+                  tp5u3.setOnFinished(e -> tp2ende.play()); //ende
+                }
+                else {
+                  tp4u3.setOnFinished(e -> tp5u4.play());  //5
+
+                  tp5u4.setOnFinished(e -> tp3ende.play()); //ende
+                }
+              }
+              else {
+                tp3u3.setOnFinished(e -> tp4u4.play()); //4
+                if (rand.nextInt(2) == 0) {
+                  tp4u4.setOnFinished(e -> tp5u5.play()); //5
+
+                  tp5u5.setOnFinished(e -> tp3ende.play()); //ende
+                }
+                else {
+                  tp4u4.setOnFinished(e -> tp5u6.play()); //5
+
+                  tp5u6.setOnFinished(e -> tp4ende.play()); //ende
+                }
+              }
+            }
+            else {
+              tp2u3.setOnFinished(e -> tp3u4.play()); //3
+              if (rand.nextInt(2) == 0) {
+                tp3u4.setOnFinished(e -> tp4u5.play()); //4
+                if (rand.nextInt(2) == 0) {
+                  tp4u5.setOnFinished(e -> tp5u5.play()); //5
+
+                  tp5u5.setOnFinished(e -> tp3ende.play()); //ende
+                }
+                else {
+                  tp4u5.setOnFinished(e -> tp5u6.play()); //5
+
+                  tp5u6.setOnFinished(e -> tp4ende.play()); //ende
+                }
+              }
+              else {
+                tp3u4.setOnFinished(e -> tp4u6.play());  //4
+                if (rand.nextInt(2) == 0) {
+                  tp4u6.setOnFinished(e -> tp5u7.play());  //5
+
+                  tp5u7.setOnFinished(e -> tp4ende.play()); //ende
+                }
+                else {
+                  tp4u6.setOnFinished(e -> tp5u8.play()); //5
+
+                  tp5u8.setOnFinished(e -> tp5ende.play()); //ende
+                }
+              }
+            }
+          }
+          else {
+            tp1u2.setOnFinished(e -> tp2u4.play()); //2
+            if (rand.nextInt(2) == 0) {
+              tp2u4.setOnFinished(e -> tp3u5.play()); //3
+              if (rand.nextInt(2) == 0) {
+                tp3u5.setOnFinished(e -> tp4u5.play()); //4
+                if (rand.nextInt(2) == 0) {
+                  tp4u5.setOnFinished(e -> tp5u5.play()); //5
+
+                  tp5u5.setOnFinished(e -> tp3ende.play()); //ende
+                }
+                else {
+                  tp4u5.setOnFinished(e -> tp5u6.play()); //5
+
+                  tp5u6.setOnFinished(e -> tp4ende.play()); //ende
+                }
+              }
+              else {
+                tp3u5.setOnFinished(e -> tp4u6.play()); //4
+                if (rand.nextInt(2) == 0) {
+                  tp4u6.setOnFinished(e -> tp5u7.play()); //5
+
+                  tp5u7.setOnFinished(e -> tp4ende.play()); //ende
+                }
+                else {
+                  tp4u6.setOnFinished(e -> tp5u8.play()); //5
+
+                  tp5u8.setOnFinished(e -> tp5ende.play()); //ende
+                }
+              }
+            }
+            else {
+              tp2u4.setOnFinished(e -> tp3u6.play()); //3
+              if (rand.nextInt(2) == 0) {
+                tp3u6.setOnFinished(e -> tp4u7.play()); //4
+                if (rand.nextInt(2) == 0) {
+                  tp4u7.setOnFinished(e -> tp5u7.play()); //5
+
+                  tp5u7.setOnFinished(e -> tp4ende.play()); //ende
+                }
+                else {
+                  tp4u7.setOnFinished(e -> tp5u8.play()); //5
+
+                  tp5u8.setOnFinished(e -> tp5ende.play()); //ende
+                }
+              }
+              else {
+                tp3u6.setOnFinished(e -> tp4u8.play());  //4
+                if (rand.nextInt(2) == 0) {
+                  tp4u8.setOnFinished(e -> tp5u9.play()); //5
+
+                  tp5u9.setOnFinished(e -> tp5ende.play()); //ende
+                }
+                else {
+                  tp4u8.setOnFinished(e -> tp5u10.play()); //5
+
+                  tp5u10.setOnFinished(e -> tp6ende.play()); //ende
+                }
+              }
+            }
+          }
+        }
+        tpstart.play();
 
         canvas.setOnMouseClicked(e -> {
             if (e.getButton() == MouseButton.PRIMARY) {
@@ -326,7 +633,7 @@ public class NagelbrettApp extends Application {
 
         pane.setCenter(canvas);
         //Objects in group
-        Group paths = new Group(p1u1, p1u2, p2u1, p2u2, p2u3, p2u4, p3u1, p3u2, p3u3, p3u4, p3u5, p3u6, p4u1, p4u2, p4u3, p4u4, p4u5, p4u6, p4u7, p4u8, p5u1, p5u2, p5u3, p5u4, p5u5, p5u6, p5u7, p5u8, p5u9, p5u10);
+        Group paths = new Group(pstart, p1u1, p1u2, p2u1, p2u2, p2u3, p2u4, p3u1, p3u2, p3u3, p3u4, p3u5, p3u6, p4u1, p4u2, p4u3, p4u4, p4u5, p4u6, p4u7, p4u8, p5u1, p5u2, p5u3, p5u4, p5u5, p5u6, p5u7, p5u8, p5u9, p5u10, p1ende, p2ende, p3ende, p4ende, p5ende, p6ende);
         Group root = new Group(pane, paths, ball);
         Scene scene = new Scene(root, WIDTH, HEIGHT, Color.web("#202124"));
         stage.setTitle("JavaFX Canvas: Nagelbrett + Animation (Starter)");
@@ -407,16 +714,16 @@ public class NagelbrettApp extends Application {
             g.fillOval(c.x - c.r, c.y - c.r, c.r * 2, c.r * 2);
         }
 
-        g.setFill(Color.CORNFLOWERBLUE);
-        g.fillOval(ballX - ballRadius, ballY - ballRadius, ballRadius * 2, ballRadius * 2);
+        //g.setFill(Color.CORNFLOWERBLUE);
+        //g.fillOval(ballX - ballRadius, ballY - ballRadius, ballRadius * 2, ballRadius * 2);
 
-        double shadowY = Math.min(h - 8, ballY + ballRadius + 8);
+        /*double shadowY = Math.min(h - 8, ballY + ballRadius + 8);
         double shadowScale = Math.max(0.2, 1.0 - (Math.abs(shadowY - (h - ballRadius)) / h));
         g.setGlobalAlpha(0.25);
         g.setFill(Color.BLACK);
         g.fillOval(ballX - ballRadius * shadowScale, shadowY,
                 (ballRadius * 2) * shadowScale, ballRadius * shadowScale);
-        g.setGlobalAlpha(1.0);
+        g.setGlobalAlpha(1.0); */
     }
 
     private void drawPegboard(GraphicsContext g, double w, double h) {
