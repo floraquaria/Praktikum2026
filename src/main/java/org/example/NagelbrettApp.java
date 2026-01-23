@@ -47,6 +47,8 @@ public class NagelbrettApp extends Application {
     private int zaehler4 = 0;
     private int zaehler5 = 0;
     private int zaehler6 = 0;
+    private boolean ende = true;
+    private static final int geschwindigkeit = 1;
 
     private double ballX = 120;
     private double ballY = 80;
@@ -332,46 +334,44 @@ public class NagelbrettApp extends Application {
         p6ende.setFill(null);
 
 
-
-
         //Path Transition
-        PathTransition tpstart = new PathTransition(Duration.seconds(4), pstart, ball);
-        PathTransition tp1u1 = new PathTransition(Duration.seconds(4), p1u1, ball);
-        PathTransition tp1u2 = new PathTransition(Duration.seconds(4), p1u2, ball);
-        PathTransition tp2u1 = new PathTransition(Duration.seconds(4), p2u1, ball);
-        PathTransition tp2u2 = new PathTransition(Duration.seconds(4), p2u2, ball);
-        PathTransition tp2u3 = new PathTransition(Duration.seconds(4), p2u3, ball);
-        PathTransition tp2u4 = new PathTransition(Duration.seconds(4), p2u4, ball);
-        PathTransition tp3u1 = new PathTransition(Duration.seconds(4), p3u1, ball);
-        PathTransition tp3u2 = new PathTransition(Duration.seconds(4), p3u2, ball);
-        PathTransition tp3u3 = new PathTransition(Duration.seconds(4), p3u3, ball);
-        PathTransition tp3u4 = new PathTransition(Duration.seconds(4), p3u4, ball);
-        PathTransition tp3u5 = new PathTransition(Duration.seconds(4), p3u5, ball);
-        PathTransition tp3u6 = new PathTransition(Duration.seconds(4), p3u6, ball);
-        PathTransition tp4u1 = new PathTransition(Duration.seconds(4), p4u1, ball);
-        PathTransition tp4u2 = new PathTransition(Duration.seconds(4), p4u2, ball);
-        PathTransition tp4u3 = new PathTransition(Duration.seconds(4), p4u3, ball);
-        PathTransition tp4u4 = new PathTransition(Duration.seconds(4), p4u4, ball);
-        PathTransition tp4u5 = new PathTransition(Duration.seconds(4), p4u5, ball);
-        PathTransition tp4u6 = new PathTransition(Duration.seconds(4), p4u6, ball);
-        PathTransition tp4u7 = new PathTransition(Duration.seconds(4), p4u7, ball);
-        PathTransition tp4u8 = new PathTransition(Duration.seconds(4), p4u8, ball);
-        PathTransition tp5u1 = new PathTransition(Duration.seconds(4), p5u1, ball);
-        PathTransition tp5u2 = new PathTransition(Duration.seconds(4), p5u2, ball);
-        PathTransition tp5u3 = new PathTransition(Duration.seconds(4), p5u3, ball);
-        PathTransition tp5u4 = new PathTransition(Duration.seconds(4), p5u4, ball);
-        PathTransition tp5u5 = new PathTransition(Duration.seconds(4), p5u5, ball);
-        PathTransition tp5u6 = new PathTransition(Duration.seconds(4), p5u6, ball);
-        PathTransition tp5u7 = new PathTransition(Duration.seconds(4), p5u7, ball);
-        PathTransition tp5u8 = new PathTransition(Duration.seconds(4), p5u8, ball);
-        PathTransition tp5u9 = new PathTransition(Duration.seconds(4), p5u9, ball);
-        PathTransition tp5u10 = new PathTransition(Duration.seconds(4), p5u10, ball);
-        PathTransition tp1ende = new PathTransition(Duration.seconds(4), p1ende, ball);
-        PathTransition tp2ende = new PathTransition(Duration.seconds(4), p2ende, ball);
-        PathTransition tp3ende = new PathTransition(Duration.seconds(4), p3ende, ball);
-        PathTransition tp4ende = new PathTransition(Duration.seconds(4), p4ende, ball);
-        PathTransition tp5ende = new PathTransition(Duration.seconds(4), p5ende, ball);
-        PathTransition tp6ende = new PathTransition(Duration.seconds(4), p6ende, ball);
+        PathTransition tpstart = new PathTransition(Duration.seconds(geschwindigkeit), pstart, ball);
+        PathTransition tp1u1 = new PathTransition(Duration.seconds(geschwindigkeit), p1u1, ball);
+        PathTransition tp1u2 = new PathTransition(Duration.seconds(geschwindigkeit), p1u2, ball);
+        PathTransition tp2u1 = new PathTransition(Duration.seconds(geschwindigkeit), p2u1, ball);
+        PathTransition tp2u2 = new PathTransition(Duration.seconds(geschwindigkeit), p2u2, ball);
+        PathTransition tp2u3 = new PathTransition(Duration.seconds(geschwindigkeit), p2u3, ball);
+        PathTransition tp2u4 = new PathTransition(Duration.seconds(geschwindigkeit), p2u4, ball);
+        PathTransition tp3u1 = new PathTransition(Duration.seconds(geschwindigkeit), p3u1, ball);
+        PathTransition tp3u2 = new PathTransition(Duration.seconds(geschwindigkeit), p3u2, ball);
+        PathTransition tp3u3 = new PathTransition(Duration.seconds(geschwindigkeit), p3u3, ball);
+        PathTransition tp3u4 = new PathTransition(Duration.seconds(geschwindigkeit), p3u4, ball);
+        PathTransition tp3u5 = new PathTransition(Duration.seconds(geschwindigkeit), p3u5, ball);
+        PathTransition tp3u6 = new PathTransition(Duration.seconds(geschwindigkeit), p3u6, ball);
+        PathTransition tp4u1 = new PathTransition(Duration.seconds(geschwindigkeit), p4u1, ball);
+        PathTransition tp4u2 = new PathTransition(Duration.seconds(geschwindigkeit), p4u2, ball);
+        PathTransition tp4u3 = new PathTransition(Duration.seconds(geschwindigkeit), p4u3, ball);
+        PathTransition tp4u4 = new PathTransition(Duration.seconds(geschwindigkeit), p4u4, ball);
+        PathTransition tp4u5 = new PathTransition(Duration.seconds(geschwindigkeit), p4u5, ball);
+        PathTransition tp4u6 = new PathTransition(Duration.seconds(geschwindigkeit), p4u6, ball);
+        PathTransition tp4u7 = new PathTransition(Duration.seconds(geschwindigkeit), p4u7, ball);
+        PathTransition tp4u8 = new PathTransition(Duration.seconds(geschwindigkeit), p4u8, ball);
+        PathTransition tp5u1 = new PathTransition(Duration.seconds(geschwindigkeit), p5u1, ball);
+        PathTransition tp5u2 = new PathTransition(Duration.seconds(geschwindigkeit), p5u2, ball);
+        PathTransition tp5u3 = new PathTransition(Duration.seconds(geschwindigkeit), p5u3, ball);
+        PathTransition tp5u4 = new PathTransition(Duration.seconds(geschwindigkeit), p5u4, ball);
+        PathTransition tp5u5 = new PathTransition(Duration.seconds(geschwindigkeit), p5u5, ball);
+        PathTransition tp5u6 = new PathTransition(Duration.seconds(geschwindigkeit), p5u6, ball);
+        PathTransition tp5u7 = new PathTransition(Duration.seconds(geschwindigkeit), p5u7, ball);
+        PathTransition tp5u8 = new PathTransition(Duration.seconds(geschwindigkeit), p5u8, ball);
+        PathTransition tp5u9 = new PathTransition(Duration.seconds(geschwindigkeit), p5u9, ball);
+        PathTransition tp5u10 = new PathTransition(Duration.seconds(geschwindigkeit), p5u10, ball);
+        PathTransition tp1ende = new PathTransition(Duration.seconds(geschwindigkeit), p1ende, ball);
+        PathTransition tp2ende = new PathTransition(Duration.seconds(geschwindigkeit), p2ende, ball);
+        PathTransition tp3ende = new PathTransition(Duration.seconds(geschwindigkeit), p3ende, ball);
+        PathTransition tp4ende = new PathTransition(Duration.seconds(geschwindigkeit), p4ende, ball);
+        PathTransition tp5ende = new PathTransition(Duration.seconds(geschwindigkeit), p5ende, ball);
+        PathTransition tp6ende = new PathTransition(Duration.seconds(geschwindigkeit), p6ende, ball);
 
         //Zaehlerfelder
         Label l1 = new Label("+ " + zaehler1);
@@ -405,9 +405,8 @@ public class NagelbrettApp extends Application {
         l6.setTextFill(Color.WHITE);
 
 
-
         // choose random
-        Random rand = getRandom(tpstart, tp1u1, tp2u1, tp3u1, tp4u1, tp5u1, tp1ende, l1, tp5u2, tp2ende, l2, tp4u2, tp5u3, tp5u4, tp3ende, l3, tp3u2, tp4u3, tp4u4, tp5u5, tp5u6, tp4ende, l4, tp2u2, tp3u3, tp3u4, tp4u5, tp4u6, tp5u7, tp5u8, tp5ende, l5, tp1u2, tp2u3, tp2u4, tp3u5, tp3u6, tp4u7, tp4u8, tp5u9, tp5u10, tp6ende, l6);
+
 
         canvas.setOnMouseClicked(e -> {
             if (e.getButton() == MouseButton.PRIMARY) {
@@ -431,8 +430,11 @@ public class NagelbrettApp extends Application {
         // Optional: make canvas follow window size
         scene.widthProperty().addListener((obs, o, w) -> canvas.setWidth(w.doubleValue()));
         scene.heightProperty().addListener((obs, o, h) -> canvas.setHeight(h.doubleValue()));
+        draw(g, canvas);
 
-        new AnimationTimer() {
+
+
+         new AnimationTimer() {
             @Override
             public void handle(long now) {
                 if (lastNanos == 0) {
@@ -441,15 +443,19 @@ public class NagelbrettApp extends Application {
                 }
                 double dt = (now - lastNanos) / 1_000_000_000.0;
                 lastNanos = now;
+                if (ende ==true) {
+                    getRandom(tpstart, tp1u1, tp2u1, tp3u1, tp4u1, tp5u1, tp1ende, l1, tp5u2, tp2ende, l2, tp4u2, tp5u3, tp5u4, tp3ende, l3, tp3u2, tp4u3, tp4u4, tp5u5, tp5u6, tp4ende, l4, tp2u2, tp3u3, tp3u4, tp4u5, tp4u6, tp5u7, tp5u8, tp5ende, l5, tp1u2, tp2u3, tp2u4, tp3u5, tp3u6, tp4u7, tp4u8, tp5u9, tp5u10, tp6ende, l6);
+                }
+                //updatePhysics(dt, canvas);
 
-                updatePhysics(dt, canvas);
-                draw(g, canvas);
+
             }
         }.start();
     }
 
-    private Random getRandom(PathTransition tpstart, PathTransition tp1u1, PathTransition tp2u1, PathTransition tp3u1, PathTransition tp4u1, PathTransition tp5u1, PathTransition tp1ende, Label l1, PathTransition tp5u2, PathTransition tp2ende, Label l2, PathTransition tp4u2, PathTransition tp5u3, PathTransition tp5u4, PathTransition tp3ende, Label l3, PathTransition tp3u2, PathTransition tp4u3, PathTransition tp4u4, PathTransition tp5u5, PathTransition tp5u6, PathTransition tp4ende, Label l4, PathTransition tp2u2, PathTransition tp3u3, PathTransition tp3u4, PathTransition tp4u5, PathTransition tp4u6, PathTransition tp5u7, PathTransition tp5u8, PathTransition tp5ende, Label l5, PathTransition tp1u2, PathTransition tp2u3, PathTransition tp2u4, PathTransition tp3u5, PathTransition tp3u6, PathTransition tp4u7, PathTransition tp4u8, PathTransition tp5u9, PathTransition tp5u10, PathTransition tp6ende, Label l6) {
+    private void getRandom(PathTransition tpstart, PathTransition tp1u1, PathTransition tp2u1, PathTransition tp3u1, PathTransition tp4u1, PathTransition tp5u1, PathTransition tp1ende, Label l1, PathTransition tp5u2, PathTransition tp2ende, Label l2, PathTransition tp4u2, PathTransition tp5u3, PathTransition tp5u4, PathTransition tp3ende, Label l3, PathTransition tp3u2, PathTransition tp4u3, PathTransition tp4u4, PathTransition tp5u5, PathTransition tp5u6, PathTransition tp4ende, Label l4, PathTransition tp2u2, PathTransition tp3u3, PathTransition tp3u4, PathTransition tp4u5, PathTransition tp4u6, PathTransition tp5u7, PathTransition tp5u8, PathTransition tp5ende, Label l5, PathTransition tp1u2, PathTransition tp2u3, PathTransition tp2u4, PathTransition tp3u5, PathTransition tp3u6, PathTransition tp4u7, PathTransition tp4u8, PathTransition tp5u9, PathTransition tp5u10, PathTransition tp6ende, Label l6) {
         Random rand = new Random();
+        ende = false;
         if (rand.nextInt(2) == 0) {
           tpstart.setOnFinished(e -> tp1u1.play()); //1
           if (rand.nextInt(2) == 0) {
@@ -466,6 +472,7 @@ public class NagelbrettApp extends Application {
                   tp1ende.setOnFinished(e -> {
                       zaehler1++;
                       l1.setText("+ "+zaehler1);
+                      ende = true;
                   });
                 }
                 else {
@@ -476,6 +483,7 @@ public class NagelbrettApp extends Application {
                   tp2ende.setOnFinished(e -> {
                       zaehler2++;
                       l2.setText("+ "+zaehler2);
+                      ende = true;
                   });
                 }
               }
@@ -489,6 +497,7 @@ public class NagelbrettApp extends Application {
                     tp2ende.setOnFinished(e -> {
                         zaehler2++;
                         l2.setText("+ "+zaehler2);
+                        ende = true;
                     });
                 }
                 else {
@@ -499,6 +508,7 @@ public class NagelbrettApp extends Application {
                     tp3ende.setOnFinished(e -> {
                         zaehler3++;
                         l3.setText("+ "+zaehler3);
+                        ende = true;
                     });
                 }
               }
@@ -515,6 +525,7 @@ public class NagelbrettApp extends Application {
                     tp2ende.setOnFinished(e -> {
                         zaehler2++;
                         l2.setText("+ "+zaehler2);
+                        ende = true;
                     });
                 }
                 else {
@@ -525,6 +536,7 @@ public class NagelbrettApp extends Application {
                     tp3ende.setOnFinished(e -> {
                         zaehler3++;
                         l3.setText("+ "+zaehler3);
+                        ende = true;
                     });
                 }
               }
@@ -538,6 +550,7 @@ public class NagelbrettApp extends Application {
                     tp3ende.setOnFinished(e -> {
                         zaehler3++;
                         l3.setText("+ "+zaehler3);
+                        ende = true;
                     });
                 }
                 else {
@@ -548,6 +561,7 @@ public class NagelbrettApp extends Application {
                     tp4ende.setOnFinished(e -> {
                         zaehler4++;
                         l4.setText("+ "+zaehler4);
+                        ende = true;
                     });
                 }
               }
@@ -567,6 +581,7 @@ public class NagelbrettApp extends Application {
                     tp2ende.setOnFinished(e -> {
                         zaehler2++;
                         l2.setText("+ "+zaehler2);
+                        ende = true;
                     });
                 }
                 else {
@@ -577,6 +592,7 @@ public class NagelbrettApp extends Application {
                     tp3ende.setOnFinished(e -> {
                         zaehler3++;
                         l3.setText("+ "+zaehler3);
+                        ende = true;
                     });
                 }
               }
@@ -590,6 +606,7 @@ public class NagelbrettApp extends Application {
                     tp3ende.setOnFinished(e -> {
                         zaehler3++;
                         l3.setText("+ "+zaehler3);
+                        ende = true;
                     });
                 }
                 else {
@@ -600,6 +617,7 @@ public class NagelbrettApp extends Application {
                     tp4ende.setOnFinished(e -> {
                         zaehler4++;
                         l4.setText("+ "+zaehler4);
+                        ende = true;
                     });
                 }
               }
@@ -616,6 +634,7 @@ public class NagelbrettApp extends Application {
                     tp3ende.setOnFinished(e -> {
                         zaehler3++;
                         l3.setText("+ "+zaehler3);
+                        ende = true;
                     });
                 }
                 else {
@@ -626,6 +645,7 @@ public class NagelbrettApp extends Application {
                     tp4ende.setOnFinished(e -> {
                         zaehler4++;
                         l4.setText("+ "+zaehler4);
+                        ende = true;
                     });
                 }
               }
@@ -639,6 +659,7 @@ public class NagelbrettApp extends Application {
                     tp4ende.setOnFinished(e -> {
                         zaehler4++;
                         l4.setText("+ "+zaehler4);
+                        ende = true;
                     });
                 }
                 else {
@@ -649,6 +670,7 @@ public class NagelbrettApp extends Application {
                     tp5ende.setOnFinished(e -> {
                         zaehler5++;
                         l5.setText("+ "+zaehler5);
+                        ende = true;
                     });
                 }
               }
@@ -671,6 +693,7 @@ public class NagelbrettApp extends Application {
                     tp2ende.setOnFinished(e -> {
                         zaehler2++;
                         l2.setText("+ "+zaehler2);
+                        ende = true;
                     });
                 }
                 else {
@@ -681,6 +704,7 @@ public class NagelbrettApp extends Application {
                     tp3ende.setOnFinished(e -> {
                         zaehler3++;
                         l3.setText("+ "+zaehler3);
+                        ende = true;
                     });
                 }
               }
@@ -694,6 +718,7 @@ public class NagelbrettApp extends Application {
                     tp3ende.setOnFinished(e -> {
                         zaehler3++;
                         l3.setText("+ "+zaehler3);
+                        ende = true;
                     });
                 }
                 else {
@@ -704,6 +729,7 @@ public class NagelbrettApp extends Application {
                     tp4ende.setOnFinished(e -> {
                         zaehler4++;
                         l4.setText("+ "+zaehler4);
+                        ende = true;
                     });
                 }
               }
@@ -720,6 +746,7 @@ public class NagelbrettApp extends Application {
                     tp3ende.setOnFinished(e -> {
                         zaehler3++;
                         l3.setText("+ "+zaehler3);
+                        ende = true;
                     });
                 }
                 else {
@@ -730,6 +757,7 @@ public class NagelbrettApp extends Application {
                     tp4ende.setOnFinished(e -> {
                         zaehler4++;
                         l4.setText("+ "+zaehler4);
+                        ende = true;
                     });
                 }
               }
@@ -743,6 +771,7 @@ public class NagelbrettApp extends Application {
                     tp4ende.setOnFinished(e -> {
                         zaehler4++;
                         l4.setText("+ "+zaehler4);
+                        ende = true;
                     });
                 }
                 else {
@@ -753,6 +782,7 @@ public class NagelbrettApp extends Application {
                     tp5ende.setOnFinished(e -> {
                         zaehler5++;
                         l5.setText("+ "+zaehler5);
+                        ende = true;
                     });
                 }
               }
@@ -772,6 +802,7 @@ public class NagelbrettApp extends Application {
                     tp3ende.setOnFinished(e -> {
                         zaehler3++;
                         l3.setText("+ "+zaehler3);
+                        ende = true;
                     });
                 }
                 else {
@@ -782,6 +813,7 @@ public class NagelbrettApp extends Application {
                     tp4ende.setOnFinished(e -> {
                         zaehler4++;
                         l4.setText("+ "+zaehler4);
+                        ende = true;
                     });
                 }
               }
@@ -795,6 +827,7 @@ public class NagelbrettApp extends Application {
                     tp4ende.setOnFinished(e -> {
                         zaehler4++;
                         l4.setText("+ "+zaehler4);
+                        ende = true;
                     });
                 }
                 else {
@@ -805,6 +838,7 @@ public class NagelbrettApp extends Application {
                     tp5ende.setOnFinished(e -> {
                         zaehler5++;
                         l5.setText("+ "+zaehler5);
+                        ende = true;
                     });
                 }
               }
@@ -821,6 +855,7 @@ public class NagelbrettApp extends Application {
                     tp4ende.setOnFinished(e -> {
                         zaehler4++;
                         l4.setText("+ "+zaehler4);
+                        ende = true;
                     });
                 }
                 else {
@@ -831,6 +866,7 @@ public class NagelbrettApp extends Application {
                     tp5ende.setOnFinished(e -> {
                         zaehler5++;
                         l5.setText("+ "+zaehler5);
+                        ende = true;
                     });
                 }
               }
@@ -844,6 +880,7 @@ public class NagelbrettApp extends Application {
                     tp5ende.setOnFinished(e -> {
                         zaehler5++;
                         l5.setText("+ "+zaehler5);
+                        ende = true;
                     });
                 }
                 else {
@@ -854,6 +891,7 @@ public class NagelbrettApp extends Application {
                     tp6ende.setOnFinished(e -> {
                         zaehler6++;
                         l6.setText("+ "+zaehler6);
+                        ende = true;
                     });
                 }
               }
@@ -861,7 +899,7 @@ public class NagelbrettApp extends Application {
           }
         }
         tpstart.play();
-        return rand;
+
     }
 
     private void updatePhysics(double dt, Canvas canvas) {
