@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.CubicCurveTo;
 import javafx.scene.shape.Sphere;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -39,7 +38,6 @@ public class NagelbrettApp extends Application {
 
     private static final int PEG_SPACING = 60;
     private static final int PEG_RADIUS = 6;
-    int middle = 400;
 
     private int zaehler1 = 0;
     private int zaehler2 = 0;
@@ -54,9 +52,9 @@ public class NagelbrettApp extends Application {
     private double ballY = 80;
     private double ballVX = 180;
     private double ballVY = 0;
-    private double ballRadius = 12;
-    private double gravity = 450;
-    private double bounce = 0.72;
+    private static final double ballRadius = 12;
+    private static final double gravity = 450;
+    private static final double bounce = 0.72;
 
     private final List<Circle> circles = new ArrayList<>();
     private final Random rand = new Random();
@@ -441,9 +439,9 @@ public class NagelbrettApp extends Application {
                     lastNanos = now;
                     return;
                 }
-                double dt = (now - lastNanos) / 1_000_000_000.0;
-                lastNanos = now;
-                if (ende ==true) {
+                //double dt = (now - lastNanos) / 1_000_000_000.0;
+                //lastNanos = now;
+                if (ende) {
                     getRandom(tpstart, tp1u1, tp2u1, tp3u1, tp4u1, tp5u1, tp1ende, l1, tp5u2, tp2ende, l2, tp4u2, tp5u3, tp5u4, tp3ende, l3, tp3u2, tp4u3, tp4u4, tp5u5, tp5u6, tp4ende, l4, tp2u2, tp3u3, tp3u4, tp4u5, tp4u6, tp5u7, tp5u8, tp5ende, l5, tp1u2, tp2u3, tp2u4, tp3u5, tp3u6, tp4u7, tp4u8, tp5u9, tp5u10, tp6ende, l6);
                 }
                 //updatePhysics(dt, canvas);
